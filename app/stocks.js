@@ -31,20 +31,31 @@ const stocksRoutes = (app) => {
       .catch(error => {
         let errorMessage = "";
         if (error.message.includes(errorKeys.timeout)) {
-          errorMessage = "Request failed because json server timeout exceeded";
-
+          res.send({
+            status: "ko",
+            message: "Request failed because json server timeout exceeded"
+          })
         } else if (error.message.includes(errorKeys.serverDown)) {
-          errorMessage = "Json server is down"
+          
+          res.send({
+            status: "ko",
+            message: "Json server is down"
+          })
         }
         else if (error.message.includes(errorKeys.path)) {
           errorMessage = "the searched path is not found on the json-server "
+          res.send({
+            status: "ko",
+            message: "the searched path is not found on the json-server "
+          })
         } else {
+          res.status(500).send({
+            status: "ko",
+            message: "errorMessage "
+          })
           errorMessage = error.message
         }
-        res.send({
-          status: "ko",
-          error: errorMessage
-        })
+        
       });
   })
 };

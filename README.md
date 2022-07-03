@@ -24,8 +24,7 @@ npm install
 
 ## Starting locally app
 
-To start backend and front server with concurrently (server is running on port 4000)
-
+To start backend and front server with concurrently 
 ```bash
 npm run dev 
 ```

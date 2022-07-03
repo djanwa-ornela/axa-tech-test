@@ -35,10 +35,6 @@ export default function App() {
   React.useEffect(() => {
     axios.get(API_URL)
       .then(response => {
-        //console.log(response)
-        console.log("response", response)
-        console.log("response data ", response.data.status)
-
         if (response.data.status === "ok") {
           setApiError(false);
           setChartData({
@@ -47,8 +43,7 @@ export default function App() {
             items: response.data.message
           })
         } else {
-          console.log("response.data.error", response.data.error);
-          setApiErrorMessage(response.data.error);
+          setApiErrorMessage(response.data.message);
           setApiError(true);
         }
       })
@@ -86,8 +81,8 @@ export default function App() {
           <tr >
             {chartData.items.map((data, index) => {
             return (
-              <td data-testid="stock-item">
-                 <input className="cell-input"  type="number" key={data.index} defaultValue={data.stocks} onChange={e => updateStockData(e.target.value, index)}
+              <td data-testid="stock-item" key={data.index} >
+                 <input className="cell-input"  type="number" defaultValue={data.stocks} onChange={e => updateStockData(e.target.value, index)}
               ></input>
               </td>
                          )

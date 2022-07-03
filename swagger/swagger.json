@@ -16,7 +16,7 @@
     "http"
   ],
   "paths": {
-    "/stocks": {
+    "/stock": {
       "get": {
         "tags": [
           "Stocks"
@@ -31,12 +31,21 @@
           "200": {
             "description": "Successful operation",
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Stocks"
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Stocks"
+                  }
+                }
               }
             }
           },
+          
           "500": {
             "description": "Internal server error",
             "schema": {
@@ -65,6 +74,9 @@
     "Error": {
       "type": "object",
       "properties": {
+        "status": {
+          "type": "string"
+        },
         "message": {
           "type": "string"
         }
