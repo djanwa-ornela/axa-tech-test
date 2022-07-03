@@ -31,21 +31,35 @@
           "200": {
             "description": "Successful operation",
             "schema": {
-              "type": "object",
-              "properties": {
-                "status": {
-                  "type": "string"
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/Stocks"
+                      }
+                    }
+                  }
                 },
-                "message": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/Stocks"
+                {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
                   }
                 }
-              }
+              ]
             }
           },
-          
           "500": {
             "description": "Internal server error",
             "schema": {

@@ -12,7 +12,7 @@ describe("Error Component" ,() => {
     // test if it retrieves the right message 
 	test("Text Rendering", () => {
 		render(<ErrorMessage message={message}/>);
-		const text = screen.getByTestId("message");
+		const text = screen.getByTestId("error-message");
 		expect(text).toBeInTheDocument();
         expect(text).toHaveTextContent(message);
 

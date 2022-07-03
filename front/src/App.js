@@ -69,25 +69,26 @@ export default function App() {
   }
   return (
     apiError || chartData.items.length === 0 ?
-      (<ErrorMessage message={apiErrorMessage}>
+      (<ErrorMessage data-testid="error-component" message={apiErrorMessage}>
       </ErrorMessage>) :
       <div>
         <Chart
+          data-testid="chart-component"
           data={[chartData]}
           dimensions={dimensions}
-        /> 
+        />
         <div>{CHART_NAME}</div>
         <table border="1" data-testid="stock-table">
           <tr >
             {chartData.items.map((data, index) => {
-            return (
-              <td data-testid="stock-item" key={data.index} >
-                 <input className="cell-input"  type="number" defaultValue={data.stocks} onChange={e => updateStockData(e.target.value, index)}
-              ></input>
-              </td>
-                         )
-          })}
-          
+              return (
+                <td data-testid="stock-item" key={data.index} >
+                  <input className="cell-input" type="number" defaultValue={data.stocks} onChange={e => updateStockData(e.target.value, index)}
+                  ></input>
+                </td>
+              )
+            })}
+
           </tr>
         </table>
       </div>
