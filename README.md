@@ -7,7 +7,7 @@
 You should clone the repo and install the dependencies.
 
 ```bash
-git clone https://github.com/djanwa-ornela/axa-test-tech.git
+git clone https://github.com/djanwa-ornela/axa-tech-test.git
 cd axa-test-tech
 ```
 ## Dependencies
