@@ -37,20 +37,18 @@ const dimensions = {
 		left: 60
 	}
 };
-const svgWidth = dimensions.width +  dimensions.margin.left +  dimensions.margin.right;
-const svgHeight =  dimensions.height +  dimensions.margin.top + dimensions.margin.bottom;
+const svgWidth = dimensions.width + dimensions.margin.left + dimensions.margin.right;
+const svgHeight = dimensions.height + dimensions.margin.top + dimensions.margin.bottom;
 
 afterEach(() => {
 	cleanup();
 })
 
 describe("chart  Component", () => {
-	// test if it the rigth heigth and width
+	// test if the chart has the rigth heigth and width
 	test("chart attributes", () => {
 		render(<Chart data={[chartData]} dimensions={dimensions} />);
-		const chart = screen.getByTestId("chart");
-		console.log("chart", chart);
-
+		const chart = screen.getByTestId("chart"); 
 		expect(chart).toBeInTheDocument();
 		expect(chart).toHaveAttribute('width', String(svgWidth));
 		expect(chart).toHaveAttribute('height', String(svgHeight));

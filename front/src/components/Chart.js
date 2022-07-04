@@ -32,8 +32,6 @@ const Chart = ({ data, dimensions }) => {
       .tickSize(-height + margin.bottom)
       .tickFormat(d => d !==0 ? d : null);//this line hide the 0 of x axis to avoid double 0 on the chart
 
-    console.log("-height + margin.bottom", -height + margin.bottom)
-
     const xAxisGroup = svg.append("g")
       .attr("transform", `translate(0, ${height})`)
       .call(xAxis);

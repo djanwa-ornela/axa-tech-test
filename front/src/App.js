@@ -48,7 +48,6 @@ export default function App() {
         }
       })
       .catch(err => {
-        console.log("err", err)
         setApiErrorMessage(SERVICE_UNAVAILABLE_ERROR_MESSAGE);
         setApiError(true)
       })
@@ -69,6 +68,7 @@ export default function App() {
   }
   return (
     apiError || chartData.items.length === 0 ?
+    
       (<ErrorMessage data-testid="error-component" message={apiErrorMessage}>
       </ErrorMessage>) :
       <div>
@@ -79,6 +79,8 @@ export default function App() {
         />
         <div>{CHART_NAME}</div>
         <table border="1" data-testid="stock-table">
+        <tbody>
+
           <tr >
             {chartData.items.map((data, index) => {
               return (
@@ -90,6 +92,7 @@ export default function App() {
             })}
 
           </tr>
+          </tbody>
         </table>
       </div>
   );
