@@ -8,7 +8,7 @@ You should clone the repo and install the dependencies.
 
 ```bash
 git clone https://github.com/djanwa-ornela/axa-tech-test.git
-cd axa-test-tech
+cd axa-tech-test
 ```
 ## Dependencies
 To install the dependencies, run the following
@@ -40,7 +40,7 @@ Start only backend server
 ```bash
 npm run start-backend 
 ```
-Open http://localhost:4000/stock to list available stock.
+Open http://localhost:4000/stocks to list available stock.
 
 ## Json server api
 

@@ -62,5 +62,4 @@ describe('App component', () => {
     const errorComponent = screen.getByTestId('error-message');
     expect(errorComponent).toBeInTheDocument();
   });
-
 })
