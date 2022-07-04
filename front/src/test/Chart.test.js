@@ -47,6 +47,7 @@ afterEach(() => {
 describe("chart  Component", () => {
 	// test if the chart has the rigth heigth and width
 	test("chart attributes", () => {
+		
 		render(<Chart data={[chartData]} dimensions={dimensions} />);
 		const chart = screen.getByTestId("chart"); 
 		expect(chart).toBeInTheDocument();

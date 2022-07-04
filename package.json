@@ -11,9 +11,8 @@
     "start-api": "json-server --host 127.0.0.1 ./api.js",
     "delay-api": "json-server  --host 127.0.0.1 ./api.js --delay 10000",
     "start-front": "npm start --prefix front",
-    "test-back": "jest",
+    "test-back": "jest --verbose --rootDir=./test",
     "test-front": "npm run test --prefix front",
-
     "dev": "concurrently \"nodemon index.js\" \"npm run start-front\""
   },
   "repository": {

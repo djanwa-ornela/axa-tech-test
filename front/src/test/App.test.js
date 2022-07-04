@@ -11,7 +11,7 @@ const errorData = {
   status: "ko",
   message: "server down"
 }
-const stocks = {
+const stocksData = {
   status: "ok",
   message: [
     {
@@ -36,21 +36,21 @@ describe('App component', () => {
   jest.setTimeout(60000);
 
   test('it renders chart name ', async () => {
-    axios.get.mockResolvedValue({ data: stocks });
+    axios.get.mockResolvedValue({ data: stocksData });
     await act(async () => render(<App />));
     const chart = screen.getByTestId('chart');
     expect(chart).toBeInTheDocument();
     expect(screen.getByText(CHART_NAME)).toBeInTheDocument();
   });
   test("it renders table ", async () => {
-    axios.get.mockResolvedValue({ data: stocks });
+    axios.get.mockResolvedValue({ data: stocksData });
     await act(async () => render(<App />));
     const stockTable = screen.getByTestId('stock-table');
     expect(stockTable).toBeInTheDocument();
   });
 
   test("it renders cell for each item ", async () => {
-    axios.get.mockResolvedValue({ data: stocks });
+    axios.get.mockResolvedValue({ data: stocksData });
     await act(async () => render(<App />));
     const stockList = await screen.findAllByTestId('stock-item');
     expect(stockList).toHaveLength(3);
