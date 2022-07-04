@@ -4,7 +4,7 @@ const axios = require('axios');
 const stockUrlJsonServer = " http://localhost:3000/stocks";
 const myCache = new NodeCache({ stdTTL: 200 });
 //axios timeout 
-const apiTimeout = 1200;
+const apiTimeout = 12000;
 const stocksKey = "stocks";
 const errorKeys = {
   timeout: "timeout ",
