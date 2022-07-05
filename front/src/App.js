@@ -73,22 +73,26 @@ export default function App() {
       <Header />
       <div className="content">
         {apiError || chartData.items.length === 0 ?
-
           (<ErrorMessage data-testid="error-component" message={apiErrorMessage}>
           </ErrorMessage>) :
           <div>
-            <div><b> {CHART_NAME}</b></div>
+            <div>
+              <div className='box red'>
+              </div>
+              <b>{CHART_NAME}</b>
+            </div>
             <Chart
               data-testid="chart-component"
               data={[chartData]}
               dimensions={dimensions}
             />
             <div>You can interact with your charts by modifing inputs above</div>
-            <table  className="table-chart" data-testid="stock-table">
+            <table className="table-chart" data-testid="stock-table">
+              <tbody>
                 <tr >
                   {chartData.items.map((data, index) => {
                     return (
-                      <td  className="row-chart" data-testid="stock-item" key={data.index} >
+                      <td className="row-chart" data-testid="stock-item" key={data.index} >
                         <input className="cell-input" type="number" defaultValue={data.stocks} onChange={e => updateStockData(e.target.value, index)}
                         ></input>
                       </td>
@@ -96,7 +100,9 @@ export default function App() {
                   })}
 
                 </tr>
+              </tbody>
             </table>
+
           </div>
         }
       </div>
