@@ -31,7 +31,7 @@ export default function FooterCustom() {
                   </Footer.LinkGroup>
                 </div>
                 <div>
-                  <Footer.Title title="our product" />
+                  <Footer.Title title="our products" />
                   <Footer.LinkGroup col={true}>
                     <Footer.Link href="#">
                       Car insurance

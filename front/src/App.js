@@ -2,8 +2,10 @@
 import React from "react";
 import ErrorMessage from "./components/ErrorMessage";
 import axios from 'axios';
-
 import Chart from "./components/Chart";
+import Header from "./components/Header";
+import FooterCustom from "./components/FooterCustom";
+
 import { useState } from 'react';
 import "./styles.css";
 
@@ -18,7 +20,7 @@ const dimensions = {
   }
 };
 const API_URL = "http://localhost:4000/stocks?limit=20";
-const SERVICE_UNAVAILABLE_ERROR_MESSAGE = "Le service est momentanément indisponible";
+const SERVICE_UNAVAILABLE_ERROR_MESSAGE = "The service is temporarily unavailable";
 const CHART_NAME = "Stocks chart";
 const CHART_COLOR = "red";
 
@@ -67,33 +69,38 @@ export default function App() {
     })
   }
   return (
-    apiError || chartData.items.length === 0 ?
-    
-      (<ErrorMessage data-testid="error-component" message={apiErrorMessage}>
-      </ErrorMessage>) :
-      <div>
-        <Chart
-          data-testid="chart-component"
-          data={[chartData]}
-          dimensions={dimensions}
-        />
-        <div>{CHART_NAME}</div>
-        <table border="1" data-testid="stock-table">
-        <tbody>
+    <>
+      <Header />
+      <div className="content">
+        {apiError || chartData.items.length === 0 ?
 
-          <tr >
-            {chartData.items.map((data, index) => {
-              return (
-                <td data-testid="stock-item" key={data.index} >
-                  <input className="cell-input" type="number" defaultValue={data.stocks} onChange={e => updateStockData(e.target.value, index)}
-                  ></input>
-                </td>
-              )
-            })}
+          (<ErrorMessage data-testid="error-component" message={apiErrorMessage}>
+          </ErrorMessage>) :
+          <div>
+            <div><b> {CHART_NAME}</b></div>
+            <Chart
+              data-testid="chart-component"
+              data={[chartData]}
+              dimensions={dimensions}
+            />
+            <div>You can interact with your charts by modifing inputs above</div>
+            <table  className="table-chart" data-testid="stock-table">
+                <tr >
+                  {chartData.items.map((data, index) => {
+                    return (
+                      <td  className="row-chart" data-testid="stock-item" key={data.index} >
+                        <input className="cell-input" type="number" defaultValue={data.stocks} onChange={e => updateStockData(e.target.value, index)}
+                        ></input>
+                      </td>
+                    )
+                  })}
 
-          </tr>
-          </tbody>
-        </table>
+                </tr>
+            </table>
+          </div>
+        }
       </div>
+      <FooterCustom />
+    </>
   );
 }

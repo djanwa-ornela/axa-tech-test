@@ -83,7 +83,11 @@
     "jest": {
       "testEnvironment": "node",
       "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$",
-      "moduleFileExtensions": ["js", "json", "jsx"],
+      "moduleFileExtensions": [
+        "js",
+        "json",
+        "jsx"
+      ],
       "coveragePathIgnorePatterns": [
         "/node_modules/"
       ]

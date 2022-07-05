@@ -36,7 +36,7 @@ const Chart = ({ data, dimensions }) => {
       .attr("transform", `translate(0, ${height})`)
       .call(xAxis);
     xAxisGroup.select(".domain").remove();
-    xAxisGroup.selectAll("line").attr("stroke", "rgba(255, 255, 255, 0.2)");
+    xAxisGroup.selectAll("line").attr("stroke", "rgba(255, 250, 255, 0.2)");
 
     xAxisGroup.selectAll("text")
       .attr("font-size", "0.75rem");

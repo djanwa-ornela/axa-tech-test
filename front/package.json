@@ -8,6 +8,8 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "d3": "^7.5.0",
+    "flowbite": "^1.4.7",
+    "flowbite-react": "^0.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
@@ -39,9 +41,12 @@
     ]
   },
   "devDependencies": {
-    "sass": "^1.53.0"
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.14",
+    "sass": "^1.53.0",
+    "tailwindcss": "^3.1.4"
   },
-  "jest":{
+  "jest": {
     "moduleNameMapper": {
       "^d3$": "/Users/admin/Desktop/axa/tech-test/front/node_modules/d3/dist/d3.min.js"
     }
