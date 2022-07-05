@@ -31,48 +31,49 @@ const stocksData = {
     },
   ]
 }
+beforeEach(async() => {
+  axios.get.mockResolvedValue({ data: stocksData });
+  await act(async () => render(<App />));
+});
 
 describe('App component with data fill', () => {
   jest.setTimeout(60000);
 
-  test('it should renders header  ', async () => {
-    axios.get.mockResolvedValue({ data: stocksData });
-    await act(async () => render(<App />));
+  test('it should renders header  ', () => {
     const header = screen.getByTestId('header');
     expect(header).toBeInTheDocument();
   }); 
-  test('it should renders chart name ', async () => {
-    axios.get.mockResolvedValue({ data: stocksData });
-    await act(async () => render(<App />));
+  test('it should renders chart name ', () => {
     const chart = screen.getByTestId('chart');
     expect(chart).toBeInTheDocument();
     expect(screen.getByText(CHART_NAME)).toBeInTheDocument();
   });
-  test("it should renders table ", async () => {
-    axios.get.mockResolvedValue({ data: stocksData });
-    await act(async () => render(<App />));
+  test("it should renders table ", () => {
+    
     const stockTable = screen.getByTestId('stock-table');
     expect(stockTable).toBeInTheDocument();
   });
 
   test("it should renders cell for each item ", async () => {
-    axios.get.mockResolvedValue({ data: stocksData });
-    await act(async () => render(<App />));
+    
     const stockList = await screen.findAllByTestId('stock-item');
     expect(stockList).toHaveLength(3);
   });
 
+ 
+  test('it should renders footer  ', () => {
+    
+    const footer = screen.getByTestId('custom-footer');
+    expect(footer).toBeInTheDocument();
+  }); 
+})
+
+
+describe('App component with error fill', () => {
   test('it should renders  error component', async () => {
     axios.get.mockResolvedValue({ data: errorData });
     await act(async () => render(<App />));
     const errorComponent = screen.getByTestId('error-message');
     expect(errorComponent).toBeInTheDocument();
   });
-  test('it should renders footer  ', async () => {
-    axios.get.mockResolvedValue({ data: stocksData });
-    await act(async () => render(<App />));
-    const footer = screen.getByTestId('custom-footer');
-    expect(footer).toBeInTheDocument();
-  }); 
 })
-
