@@ -1,7 +1,8 @@
 const routes = require('../app/routes');
 const express = require('express');
 const moxios = require('moxios');
-const stockUrlJsonServer = " http://localhost:3000/stocks";
+const stockUrlJsonServer = "http://127.0.0.1:3000/stocks";
+
 const request = require('supertest');
 
 const initRoutes = () => {
@@ -9,14 +10,15 @@ const initRoutes = () => {
   routes(app);
   return app;
 }
-
 describe('GET /stocks', () => {
   beforeEach(() => {
-    moxios.install();
+   moxios.install();
   });
   afterEach(() => {
-    moxios.uninstall();
+   moxios.uninstall();
   }); 
+  jest.setTimeout(15000);
+
   test('It should 200 and a parsed json with keys status and message', async () => {
     moxios.stubRequest(stockUrlJsonServer, {
       status: 200,
@@ -42,5 +44,7 @@ describe('GET /stocks', () => {
     expect(response.body).toHaveProperty("status");
     expect(response.body.status).toEqual("ok");
     expect(response.body.message).toHaveLength(3);
+
   });
+  
 });
