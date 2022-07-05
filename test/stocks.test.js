@@ -2,7 +2,6 @@ const routes = require('../app/routes');
 const express = require('express');
 const moxios = require('moxios');
 const stockUrlJsonServer = "http://127.0.0.1:3000/stocks";
-
 const request = require('supertest');
 
 const initRoutes = () => {
@@ -12,12 +11,27 @@ const initRoutes = () => {
 }
 describe('GET /stocks', () => {
   beforeEach(() => {
-   moxios.install();
+    moxios.install();
   });
   afterEach(() => {
-   moxios.uninstall();
-  }); 
+    moxios.uninstall();
+  });
   jest.setTimeout(15000);
+
+
+
+  test('It should 200 and a parsed error with keys status and message', async () => {
+   
+   moxios.stubRequest(stockUrlJsonServer, {
+      status: 400,
+      message: 'Request failed'
+    });
+    const app = initRoutes();
+    const response = await request(app).get('/stocks');
+    console.log("response", response.body)
+    expect(response.body).toHaveProperty("status");
+    expect(response.body.status).toEqual("ko");
+  });
 
   test('It should 200 and a parsed json with keys status and message', async () => {
     moxios.stubRequest(stockUrlJsonServer, {
@@ -36,15 +50,14 @@ describe('GET /stocks', () => {
         {
           "timestamp": "2022-06-29T12:23:27.114Z",
           "index": 2,
-          "stocks": "21.774"  
+          "stocks": "21.774"
         }]
-    }); 
+    });
     const app = initRoutes();
     const response = await request(app).get('/stocks');
     expect(response.body).toHaveProperty("status");
     expect(response.body.status).toEqual("ok");
     expect(response.body.message).toHaveLength(3);
-
   });
-  
+
 });
