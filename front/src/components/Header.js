@@ -4,7 +4,7 @@ import { Navbar} from 'flowbite-react'
 export default function Header() {
     return (
         <>
-            <Navbar className="fixed top-0 w-full" fluid={true} rounded={true}>
+            <Navbar  data-testid="header" className="fixed top-0 w-full" fluid={true} rounded={true}>
                 <Navbar.Brand >
                     <img
                         src="axa-logo.png"

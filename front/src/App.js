@@ -106,7 +106,7 @@ export default function App() {
           </div>
         }
       </div>
-      <FooterCustom />
+      <FooterCustom  />
     </>
   );
 }

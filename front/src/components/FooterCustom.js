@@ -3,7 +3,8 @@ import { Footer } from 'flowbite-react'
 
 export default function FooterCustom() {
   return (
-    <Footer container={true}>
+    <div data-testid="custom-footer" >                
+    <Footer  container={true}>
       <div className="w-full text-center">
         <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
 
@@ -83,6 +84,7 @@ export default function FooterCustom() {
         </div>
         </div>
     </Footer>
+    </div>
 
   )
 }
