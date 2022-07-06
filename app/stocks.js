@@ -1,7 +1,7 @@
 
 const NodeCache = require("node-cache");
 const axios = require('axios');
-const stockUrlJsonServer = " http://localhost:3000/stocks";
+const stockUrlJsonServer = "http://127.0.0.1:3000/stocks";
 const myCache = new NodeCache({ stdTTL: 200 });
 //axios timeout 
 const apiTimeout = 12000;
@@ -46,7 +46,7 @@ const stocksRoutes = (app) => {
           errorMessage = "the searched path is not found on the json-server "
           res.send({
             status: "ko",
-            message: "the searched path is not found on the json-server "
+            message: "the searched path is not found on the json-server"
           })
         } else {
           res.status(500).send({
