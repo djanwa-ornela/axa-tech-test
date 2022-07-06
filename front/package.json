@@ -43,13 +43,14 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",
+    "jest-watch-typehead":"^0.6.5",
     "postcss": "^8.4.14",
     "sass": "^1.53.0",
     "tailwindcss": "^3.1.4"
   },
   "jest": {
     "moduleNameMapper": {
-      "^d3$": "/Users/admin/Desktop/axa/tech-test/front/node_modules/d3/dist/d3.min.js"
+      "^d3$": "<rootDir>/front/node_modules/d3/dist/d3.min.js"
     }
   }
 }
