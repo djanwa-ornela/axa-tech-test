@@ -12,7 +12,6 @@ cd axa-tech-test
 ```
 ## Dependencies
 To install the dependencies, run the following
-
 ```bash
 npm install
 ```
@@ -20,6 +19,14 @@ To install the dependencies for the frontend , run the following
 ```bash
 cd front
 npm install
+```
+
+## Proxy
+
+To avoid proxy error while running app , env var NO_PROXY is set to localhost before each command
+Eg:
+```bash
+"start-backend": " NO_PROXY=localhost nodemon index.js"
 ```
 
 ## Starting locally app
